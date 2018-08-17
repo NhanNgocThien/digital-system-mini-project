@@ -1,0 +1,399 @@
+|MiniProject
+HEX0[6] <= IC7447:inst11.out[6]
+HEX0[5] <= IC7447:inst11.out[5]
+HEX0[4] <= IC7447:inst11.out[4]
+HEX0[3] <= IC7447:inst11.out[3]
+HEX0[2] <= IC7447:inst11.out[2]
+HEX0[1] <= IC7447:inst11.out[1]
+HEX0[0] <= IC7447:inst11.out[0]
+SW17 => IC7447:inst11.En
+SW17 => countdown:inst1.En
+SW17 => setTime:inst4.En
+SW17 => IC7447:inst10.En
+SW17 => IC7447:inst9.En
+SW17 => IC7447:inst6.En
+SW17 => toLEDR:inst113.En
+SW9 => countdown:inst1.enSet
+SW9 => Time:inst.set
+SW9 => setTime:inst4.enSet
+CLOCK_50 => pll:inst5.inclk0
+KEY[0] => setTime:inst4.submit
+SW6 => setTime:inst4.Din[6]
+SW6 => bintoBCD:inst2.in[6]
+SW5 => setTime:inst4.Din[5]
+SW5 => bintoBCD:inst2.in[5]
+SW4 => setTime:inst4.Din[4]
+SW4 => bintoBCD:inst2.in[4]
+SW3 => setTime:inst4.Din[3]
+SW3 => bintoBCD:inst2.in[3]
+SW2 => setTime:inst4.Din[2]
+SW2 => bintoBCD:inst2.in[2]
+SW1 => setTime:inst4.Din[1]
+SW1 => bintoBCD:inst2.in[1]
+SW0 => setTime:inst4.Din[0]
+SW0 => bintoBCD:inst2.in[0]
+SW8 => setTime:inst4.select[1]
+SW7 => setTime:inst4.select[0]
+HEX1[6] <= IC7447:inst10.out[6]
+HEX1[5] <= IC7447:inst10.out[5]
+HEX1[4] <= IC7447:inst10.out[4]
+HEX1[3] <= IC7447:inst10.out[3]
+HEX1[2] <= IC7447:inst10.out[2]
+HEX1[1] <= IC7447:inst10.out[1]
+HEX1[0] <= IC7447:inst10.out[0]
+HEX4[6] <= IC7447:inst9.out[6]
+HEX4[5] <= IC7447:inst9.out[5]
+HEX4[4] <= IC7447:inst9.out[4]
+HEX4[3] <= IC7447:inst9.out[3]
+HEX4[2] <= IC7447:inst9.out[2]
+HEX4[1] <= IC7447:inst9.out[1]
+HEX4[0] <= IC7447:inst9.out[0]
+HEX5[6] <= IC7447:inst6.out[6]
+HEX5[5] <= IC7447:inst6.out[5]
+HEX5[4] <= IC7447:inst6.out[4]
+HEX5[3] <= IC7447:inst6.out[3]
+HEX5[2] <= IC7447:inst6.out[2]
+HEX5[1] <= IC7447:inst6.out[1]
+HEX5[0] <= IC7447:inst6.out[0]
+LEDR[0] <= toLEDR:inst113.LEDR0
+LEDR[1] <= toLEDR:inst113.LEDR1
+LEDR[2] <= toLEDR:inst113.LEDR2
+
+
+|MiniProject|IC7447:inst11
+in[0] => Decoder0.IN3
+in[1] => Decoder0.IN2
+in[2] => Decoder0.IN1
+in[3] => Decoder0.IN0
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+out[6] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|bintoBCD:inst8
+in[0] => LSB[0].DATAIN
+in[1] => LessThan2.IN8
+in[1] => Add2.IN8
+in[1] => LSB.DATAA
+in[2] => LessThan1.IN8
+in[2] => Add1.IN8
+in[2] => LSB.DATAA
+in[3] => LessThan0.IN6
+in[3] => Add0.IN6
+in[3] => LSB.DATAA
+in[4] => LessThan0.IN5
+in[4] => Add0.IN5
+in[4] => LSB.DATAA
+in[5] => LessThan0.IN4
+in[5] => Add0.IN4
+in[5] => LSB.DATAA
+in[6] => ~NO_FANOUT~
+MSB[0] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+MSB[1] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+MSB[2] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+MSB[3] <= <GND>
+LSB[0] <= in[0].DB_MAX_OUTPUT_PORT_TYPE
+LSB[1] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+LSB[2] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+LSB[3] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|countdown:inst1
+En => always0.IN0
+enSet => always0.IN1
+enSet => select[0].IN1
+CLK => ~NO_FANOUT~
+T[0] => Q.DATAB
+T[0] => Q[0].DATAA
+T[1] => Q.DATAB
+T[1] => Q[1].DATAA
+T[2] => Q.DATAB
+T[2] => Q[2].DATAA
+T[3] => Q.DATAB
+T[3] => Q[3].DATAA
+T[4] => Q.DATAB
+T[4] => Q[4].DATAA
+T[5] => Q.DATAB
+T[5] => Q[5].DATAA
+T[6] => Q.DATAB
+T[6] => Q[6].DATAA
+select[0] <= select[0].DB_MAX_OUTPUT_PORT_TYPE
+select[1] <= select[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[0] <= Q[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|pll:inst5
+inclk0 => sub_wire1[0].IN1
+c0 <= altpll:altpll_component.clk
+
+
+|MiniProject|pll:inst5|altpll:altpll_component
+inclk[0] => pll_altpll:auto_generated.inclk[0]
+inclk[1] => pll_altpll:auto_generated.inclk[1]
+fbin => ~NO_FANOUT~
+pllena => ~NO_FANOUT~
+clkswitch => ~NO_FANOUT~
+areset => ~NO_FANOUT~
+pfdena => ~NO_FANOUT~
+clkena[0] => ~NO_FANOUT~
+clkena[1] => ~NO_FANOUT~
+clkena[2] => ~NO_FANOUT~
+clkena[3] => ~NO_FANOUT~
+clkena[4] => ~NO_FANOUT~
+clkena[5] => ~NO_FANOUT~
+extclkena[0] => ~NO_FANOUT~
+extclkena[1] => ~NO_FANOUT~
+extclkena[2] => ~NO_FANOUT~
+extclkena[3] => ~NO_FANOUT~
+scanclk => ~NO_FANOUT~
+scanclkena => ~NO_FANOUT~
+scanaclr => ~NO_FANOUT~
+scanread => ~NO_FANOUT~
+scanwrite => ~NO_FANOUT~
+scandata => ~NO_FANOUT~
+phasecounterselect[0] => ~NO_FANOUT~
+phasecounterselect[1] => ~NO_FANOUT~
+phasecounterselect[2] => ~NO_FANOUT~
+phasecounterselect[3] => ~NO_FANOUT~
+phaseupdown => ~NO_FANOUT~
+phasestep => ~NO_FANOUT~
+configupdate => ~NO_FANOUT~
+fbmimicbidir <> <GND>
+clk[0] <= clk[0].DB_MAX_OUTPUT_PORT_TYPE
+clk[1] <= clk[1].DB_MAX_OUTPUT_PORT_TYPE
+clk[2] <= clk[2].DB_MAX_OUTPUT_PORT_TYPE
+clk[3] <= clk[3].DB_MAX_OUTPUT_PORT_TYPE
+clk[4] <= clk[4].DB_MAX_OUTPUT_PORT_TYPE
+extclk[0] <= <GND>
+extclk[1] <= <GND>
+extclk[2] <= <GND>
+extclk[3] <= <GND>
+clkbad[0] <= <GND>
+clkbad[1] <= <GND>
+enable1 <= <GND>
+enable0 <= <GND>
+activeclock <= <GND>
+clkloss <= <GND>
+locked <= <GND>
+scandataout <= <GND>
+scandone <= <GND>
+sclkout0 <= <GND>
+sclkout1 <= <GND>
+phasedone <= <GND>
+vcooverrange <= <GND>
+vcounderrange <= <GND>
+fbout <= <GND>
+fref <= <GND>
+icdrclk <= <GND>
+
+
+|MiniProject|pll:inst5|altpll:altpll_component|pll_altpll:auto_generated
+clk[0] <= pll1.CLK
+clk[1] <= pll1.CLK1
+clk[2] <= pll1.CLK2
+clk[3] <= pll1.CLK3
+clk[4] <= pll1.CLK4
+inclk[0] => pll1.CLK
+inclk[1] => pll1.CLK1
+
+
+|MiniProject|Time:inst
+set => tR[3].IN1
+set => tY[0].IN1
+set => tG[0].IN1
+set => Mux7.IN1
+set => Mux7.IN2
+set => Mux7.IN3
+select[0] => Decoder0.IN1
+select[0] => Mux6.IN2
+select[0] => Mux5.IN2
+select[0] => Mux4.IN2
+select[0] => Mux3.IN2
+select[0] => Mux2.IN2
+select[0] => Mux1.IN2
+select[0] => Mux0.IN2
+select[0] => Mux7.IN5
+select[1] => Decoder0.IN0
+select[1] => Mux6.IN1
+select[1] => Mux5.IN1
+select[1] => Mux4.IN1
+select[1] => Mux3.IN1
+select[1] => Mux2.IN1
+select[1] => Mux1.IN1
+select[1] => Mux0.IN1
+select[1] => Mux7.IN4
+D[0] => tR[0].DATAIN
+D[0] => tG[0].DATAIN
+D[0] => tY[0].DATAIN
+D[1] => tR[1].DATAIN
+D[1] => tY[1].DATAIN
+D[1] => tG[1].DATAIN
+D[2] => tR[2].DATAIN
+D[2] => tY[2].DATAIN
+D[2] => tG[2].DATAIN
+D[3] => tR[3].DATAIN
+D[3] => tY[3].DATAIN
+D[3] => tG[3].DATAIN
+D[4] => tR[4].DATAIN
+D[4] => tY[4].DATAIN
+D[4] => tG[4].DATAIN
+D[5] => tR[5].DATAIN
+D[5] => tY[5].DATAIN
+D[5] => tG[5].DATAIN
+D[6] => tR[6].DATAIN
+D[6] => tY[6].DATAIN
+D[6] => tG[6].DATAIN
+Q[0] <= Q[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|setTime:inst4
+submit => ~NO_FANOUT~
+select[0] => ~NO_FANOUT~
+select[1] => ~NO_FANOUT~
+Din[0] => ~NO_FANOUT~
+Din[1] => ~NO_FANOUT~
+Din[2] => ~NO_FANOUT~
+Din[3] => ~NO_FANOUT~
+Din[4] => ~NO_FANOUT~
+Din[5] => ~NO_FANOUT~
+Din[6] => ~NO_FANOUT~
+En => ~NO_FANOUT~
+enSet => ~NO_FANOUT~
+selout[0] <= selout[0].DB_MAX_OUTPUT_PORT_TYPE
+selout[1] <= selout[1].DB_MAX_OUTPUT_PORT_TYPE
+Dout[0] <= Dout[0].DB_MAX_OUTPUT_PORT_TYPE
+Dout[1] <= Dout[1].DB_MAX_OUTPUT_PORT_TYPE
+Dout[2] <= Dout[2].DB_MAX_OUTPUT_PORT_TYPE
+Dout[3] <= Dout[3].DB_MAX_OUTPUT_PORT_TYPE
+Dout[4] <= Dout[4].DB_MAX_OUTPUT_PORT_TYPE
+Dout[5] <= Dout[5].DB_MAX_OUTPUT_PORT_TYPE
+Dout[6] <= Dout[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|IC7447:inst10
+in[0] => Decoder0.IN3
+in[1] => Decoder0.IN2
+in[2] => Decoder0.IN1
+in[3] => Decoder0.IN0
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+out[6] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|IC7447:inst9
+in[0] => Decoder0.IN3
+in[1] => Decoder0.IN2
+in[2] => Decoder0.IN1
+in[3] => Decoder0.IN0
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+out[6] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|bintoBCD:inst2
+in[0] => LSB[0].DATAIN
+in[1] => LessThan2.IN8
+in[1] => Add2.IN8
+in[1] => LSB.DATAA
+in[2] => LessThan1.IN8
+in[2] => Add1.IN8
+in[2] => LSB.DATAA
+in[3] => LessThan0.IN6
+in[3] => Add0.IN6
+in[3] => LSB.DATAA
+in[4] => LessThan0.IN5
+in[4] => Add0.IN5
+in[4] => LSB.DATAA
+in[5] => LessThan0.IN4
+in[5] => Add0.IN4
+in[5] => LSB.DATAA
+in[6] => ~NO_FANOUT~
+MSB[0] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+MSB[1] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+MSB[2] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+MSB[3] <= <GND>
+LSB[0] <= in[0].DB_MAX_OUTPUT_PORT_TYPE
+LSB[1] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+LSB[2] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+LSB[3] <= LSB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|IC7447:inst6
+in[0] => Decoder0.IN3
+in[1] => Decoder0.IN2
+in[2] => Decoder0.IN1
+in[3] => Decoder0.IN0
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+En => out.OUTPUTSELECT
+out[6] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MiniProject|toLEDR:inst113
+in[0] => LEDR1.IN1
+in[0] => LEDR0.IN1
+in[0] => LEDR2.IN1
+in[1] => LEDR0.IN0
+in[1] => LEDR1.IN0
+En => LEDR1.IN1
+En => LEDR0.IN1
+LEDR0 <= LEDR0.DB_MAX_OUTPUT_PORT_TYPE
+LEDR1 <= LEDR1.DB_MAX_OUTPUT_PORT_TYPE
+LEDR2 <= LEDR2.DB_MAX_OUTPUT_PORT_TYPE
+
+

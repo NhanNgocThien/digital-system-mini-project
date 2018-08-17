@@ -1,0 +1,30 @@
+module countdown( En, EnSetting, Clk, tR, tY, tG, Q ); // Clr is Reset for SetUp
+
+	input En, EnSetting, Clk ; 
+	input[6:0] tR, tY, tG;
+	reg [1:0]  colour;	
+	reg [22:0] counter;
+
+	output reg [6:0] Q; // Output for 7seg
+	
+	initial counter = 22'b0;
+	initial colour = 2'b00; 
+	initial Q = tR;
+
+	always @(posedge Clk) 
+		if (En || EnSetting) counter = counter + 1;
+		else counter = 1'd0;
+	
+	always @(posedge counter[22]) 
+		if (En || EnSetting)
+		begin
+			Q = (colour == 2'b00 ? tR : (colour == 2'b01 ? tY : (colour == 2'b11 ? tG : 2'b00)));
+			Q = Q - 1;
+			if (Q == 1'd0) colour = colour + 1 ;
+		end
+		else 
+			begin
+				Q = 1'd0;
+				colour = 1'd0;
+			end
+endmodule

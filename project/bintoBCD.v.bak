@@ -1,0 +1,5 @@
+module bintoBCD(in, MSB, LSB);
+	input[6:0] in;
+	output[3:0] MSB, LSB;
+	
+endmodule 
